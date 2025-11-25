@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Tarefas</title>
+</head>
+<body>
+    <header>
+        <h1>Tarefas</h1>
+    </header>
+    <main>
+        <form action="post">
+            <div class="inputs">
+                <label for="tarefa">Tarefa</label>
+                <input type="text" id="tarefa">
+            </div>
+            <div class="inputs">
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario"> 
+            </div>   
+            <div class="inputs">
+                <label for="det-tarefa">Detalhe Tarefa</label>
+                <input type="text" id="det-tarefa">
+            </div>  
+            <div class="inputs">      
+                <label for="tag">Tag</label>
+                <input type="text" id="tag">
+            </div>
+            <div class="inputs"> 
+                <label for="tarefa-tag">Tarefa Tag</label>
+                <input type="text" id="tarefa-tag">
+            </div>
+        </form>
+
+        <div>
+            <button id="enviar">Enviar</button>
+        </div>
+
+        <section id="resultado">
+
+        </section>
+    
+
+        <section id="parametros">
+        </section>
+
+        <div>
+            <button>Excluir</button>
+        </div>
+    </main>
+
+    <script>
+        const API_BASE_URL = "https://unctuous-incorruptible-elizabet.ngrok-free.dev/api";
+    </script>
+    <script src="/assets/js/listar.js"></script>
+    <script src="/assets/js/cadastrar.js"></script>
+</body>
+</html>

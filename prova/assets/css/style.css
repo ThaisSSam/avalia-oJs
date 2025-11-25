@@ -9,3 +9,12 @@ li{
 #parametros{
     margin-top: 2rem;
 }
+
+.erro{
+    color: red;
+}
+
+a{
+    display: block; 
+    margin-top: 10px;
+}

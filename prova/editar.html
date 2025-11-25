@@ -4,43 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Gerenciamento de Tarefas</title>
+    <title>Editar tarefa</title>
 </head>
 <body>
     <header>
-        <h1>Tarefas</h1>
+        <h1>Editar tarefa </h1>
         <p id="api-erro" ></p>
     </header>
     <main>
-        <form id="task-form">
+        <form id="edit-task-form">
+            <input type="hidden" id="task-id">
+
             <div class="inputs">
                 <label for="title">Título da Tarefa</label>
                 <input type="text" id="title" data-input-name="Título">
                 <span class="error-message" data-error-for="title" ></span>
             </div>
-            
+
             <div class="inputs">
                 <label for="description">Descrição (Opcional)</label>
                 <input type="text" id="description" data-input-name="Descrição">
             </div>
-            
+
             <div class="inputs">
                 <label for="completed">Concluída</label>
                 <input type="checkbox" id="completed">
             </div>
-            
-            <button id="enviar" type="submit">Cadastrar Tarefa</button>
+
+            <button id="salvar" type="submit">Salvar Edição</button>
+            <a href="index.html">Voltar para Lista</a>
         </form>
-
-        <section id="listagem-tarefas">
-            <h2>Lista de Tarefas</h2>
-            <ul id="lista-de-tarefas">
-            </ul>
-        </section>
-
     </main>
-    
     <script src="assets/js/constantes.js"></script> 
-    <script src="assets/js/listar.js"></script> 
+    <script src="assets/js/editar.js"></script>
 </body>
 </html>

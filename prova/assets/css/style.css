@@ -18,3 +18,8 @@ a{
     display: block; 
     margin-top: 10px;
 }
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+}

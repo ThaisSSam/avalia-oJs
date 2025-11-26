@@ -1,18 +1,18 @@
-const editTaskForm = document.getElementById("edit-task-form");
-const taskIdInput = document.getElementById("task-id");
+const editForm = document.getElementById("edit-form");
+const idInput = document.getElementById("id");
 const apiErrorMessage = document.getElementById("api-erro");
 
-async function buscarEPreencherTarefa(taskId) {
+async function buscarEPreencherTarefa(id) {
     apiErrorMessage.textContent = '';
     try {
    
-        const task = await fetchApi(`/todos/${taskId}`, 'GET');
+        const form = await fetchApi(`/todos/${id}`, 'GET');
 
-        if (task) {
-            taskIdInput.value = task.id;
-            document.getElementById('title').value = task.title || '';
-            document.getElementById('description').value = task.description || '';
-            document.getElementById('completed').checked = task.completed || false; 
+        if ( form) {
+            idInput.value = form.id;
+            document.getElementById('title').value = form.title || '';
+            document.getElementById('description').value = form.description || '';
+            document.getElementById('completed').checked = form.completed || false; 
             
         } else {
             throw new Error("Tarefa não encontrada.");
@@ -25,10 +25,10 @@ async function buscarEPreencherTarefa(taskId) {
     }
 }
 
-async function salvarEdicao(taskId, dadosParaEdicao) {
+async function salvarEdicao(id, dadosParaEdicao) {
     apiErrorMessage.textContent = '';
     try {
-        await fetchApi(`/todos/${taskId}`, 'PUT', dadosParaEdicao);
+        await fetchApi(`/todos/${id}`, 'PUT', dadosParaEdicao);
 
         alert("Tarefa salva com sucesso!");
         window.location.href = 'index.html'; 
@@ -42,7 +42,7 @@ async function salvarEdicao(taskId, dadosParaEdicao) {
 editTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     
-    const taskId = taskIdInput.value;
+    const id = idInput.value;
 
     const titleElement = document.getElementById("title");
     const descriptionElement = document.getElementById("description");
@@ -63,18 +63,18 @@ editTaskForm.addEventListener("submit", async (e) => {
         completed: completed
     };
 
-    await salvarEdicao(taskId, dadosParaEdicao);
+    await salvarEdicao(id, dadosParaEdicao);
 });
 
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const urlParams = new URLSearchParams(window.location.search);
-    const taskId = urlParams.get('id');
+    const id = urlParams.get('id');
 
-    if (taskId) {
+    if (id) {
       
-        buscarEPreencherTarefa(taskId);
+        buscarEPreencherTarefa(id);
     } else {
         alert("ID da tarefa não fornecido. Redirecionando.");
         window.location.href = 'index.html';

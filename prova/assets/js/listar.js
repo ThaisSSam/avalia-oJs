@@ -1,4 +1,4 @@
-const taskForm = document.getElementById("task-form");
+const form = document.getElementById("form");
 const listaDeTarefas = document.getElementById("lista-de-tarefas");
 const apiErrorMessage = document.getElementById("api-erro"); 
 
@@ -18,7 +18,7 @@ function limparErrosValidacao() {
     document.querySelectorAll('.error-message').forEach(span => { 
         span.textContent = '';
     });
-    document.querySelectorAll('#task-form input').forEach(input => {
+    document.querySelectorAll('#form input').forEach(input => {
         input.style.borderColor = '';
     });
 }
@@ -30,7 +30,7 @@ function validarFormulario(title) {
 
 
     if (titleTrim.length < 3) {
-        exibirMensagemErro('title', 'O Título da tarefa é obrigatório e deve ter no mínimo 3 caracteres.');
+        exibirMensagemErro('title', 'O Título é obrigatório e deve ter no mínimo 3 caracteres.');
         valido = false;
     }
     return valido;
@@ -43,8 +43,10 @@ function renderItem(item) {
     li.innerHTML = `
         <strong>${item.title}</strong> (${status})
         <p style="margin-left: 20px; font-size: 0.9em;">Descrição: ${item.description || 'N/A'}</p>
-        <a href="editar.html?id=${item.id}" style="margin-left: 10px;">[Editar]</a> 
-        <button data-id="${item.id}" class="excluir-btn" style="margin-left: 10px;">Excluir</button>
+        <div class="botoes">
+            <button href="editar.html?id=${item.id}" style="margin-left: 10px;">Editar</button> 
+            <button data-id="${item.id}" class="excluir-btn" style="margin-left: 10px;">Excluir</button>
+        </div>
     `;
     return li;
 }
@@ -148,7 +150,7 @@ async function excluirTarefa(tarefaId) {
 
 
 
-taskForm.addEventListener("submit", async (e) => {
+ form.addEventListener("submit", async (e) => {
     e.preventDefault();
     
 
